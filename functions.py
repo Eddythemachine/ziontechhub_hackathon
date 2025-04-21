@@ -131,7 +131,7 @@ def age(df):
 
 	temp_df['Age_Group'] = pd.cut(temp_df['Age'], bins=age_bins, labels=age_labels, right=False)
 
-	age_risk_viz = train_df.copy()
+	age_risk_viz = df.copy()
 	age_risk_viz['Age_Group'] = pd.cut(age_risk_viz['Age'], bins=age_bins, labels=age_labels, right=False)
 	age_risk_grouped = age_risk_viz.groupby(['Age_Group', 'Risk_Flag']).size().unstack(fill_value=0)
 	age_risk_grouped['Total'] = age_risk_grouped.sum(axis=1)
