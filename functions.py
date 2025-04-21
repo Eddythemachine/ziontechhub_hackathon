@@ -122,7 +122,7 @@ def income(df):
 def age(train_df):
 	print_min_and_max_value("Age", train_df)
 
-	temp_df = df.copy()
+	temp_df = train_df.copy()
 
 	age_bins = [21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, float('inf')]
 	age_labels = ['21-25', '26-30', '31-35', '36-40', '41-45',
