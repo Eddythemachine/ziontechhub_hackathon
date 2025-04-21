@@ -119,8 +119,8 @@ def income(df):
 	plt.show()
 
 
-def age(df):
-	print_min_and_max_value("Age", df)
+def age(train_df):
+	print_min_and_max_value("Age", train_df)
 
 	temp_df = df.copy()
 
