@@ -59,13 +59,13 @@ def print_unique_items(df):
 
 
 # Print Min and Max Values
-def print_min_and_max_value(data, train_df):
-	if data not in train_df.columns:
+def print_min_and_max_value(data, df):
+	if data not in df.columns:
 		warnings.warn(f"⚠️ The column '{data}' does not exist in the DataFrame.")
 		return
 
-	print(f"Min {data}: {train_df[data].min()}")
-	print(f"Max {data}: {train_df[data].max()}")
+	print(f"Min {data}: {df[data].min()}")
+	print(f"Max {data}: {df[data].max()}")
 
 
 # Data Visualisation Functions
@@ -119,10 +119,10 @@ def income(df):
 	plt.show()
 
 
-def age(train_df):
-	print_min_and_max_value("Age", train_df)
+def age(df):
+	print_min_and_max_value("Age", df)
 
-	temp_df = train_df.copy()
+	temp_df = df.copy()
 
 	age_bins = [21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, float('inf')]
 	age_labels = ['21-25', '26-30', '31-35', '36-40', '41-45',
@@ -155,8 +155,8 @@ def age(train_df):
 	add_space()
 
 	plt.figure(figsize=(10, 6))
-	sns.kdeplot(data=train_df[train_df['Risk_Flag'] == 1], x='Age', label='High Risk (1)', fill=True, color='red')
-	sns.kdeplot(data=train_df[train_df['Risk_Flag'] == 0], x='Age', label='Low Risk (0)', fill=True, color='blue')
+	sns.kdeplot(data=df[df['Risk_Flag'] == 1], x='Age', label='High Risk (1)', fill=True, color='red')
+	sns.kdeplot(data=df[df['Risk_Flag'] == 0], x='Age', label='Low Risk (0)', fill=True, color='blue')
 	plt.title('Age Distribution by Risk Flag')
 	plt.xlabel('Age')
 	plt.ylabel('Density')
