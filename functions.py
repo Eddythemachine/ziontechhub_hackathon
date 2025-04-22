@@ -20,25 +20,28 @@ def add_space():
 
 
 # encoding 
+# Encoding function
 def encode_category_data(train_set, test_set):
-	train_set = train_set.copy()
-	test_set = test_set.copy()
+    train_set = train_set.copy()
+    test_set = test_set.copy()
 
-	# Binary categorical features — use LabelEncoder
-	binary_cols = ['Married/Single', 'Car_Ownership']
-	for col in binary_cols:
-		le = LabelEncoder()
-		train_set[col] = le.fit_transform(train_set[col])
-		test_set[col] = le.transform(test_set[col])
+    # Binary categorical features — use LabelEncoder
+    binary_cols = ['Married/Single', 'Car_Ownership']
+    for col in binary_cols:
+        le = LabelEncoder()
+        train_set[col] = le.fit_transform(train_set[col])
+        test_set[col] = le.transform(test_set[col])
 
-	# Multi-class categorical features — use OrdinalEncoder
-	multi_class_cols = ['House_Ownership', 'Profession', 'CITY', 'STATE', 'Marital_Home_Status']
-	oe = OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1)
+    # Multi-class categorical features — use OrdinalEncoder
+    multi_class_cols = ['House_Ownership', 'Profession', 'CITY', 'STATE', 'Marital_Home_Status', 'Career_Stage']
+    oe = OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1)
 
-	train_set[multi_class_cols] = oe.fit_transform(train_set[multi_class_cols])
-	test_set[multi_class_cols] = oe.transform(test_set[multi_class_cols])
+    train_set[multi_class_cols] = oe.fit_transform(train_set[multi_class_cols])
+    test_set[multi_class_cols] = oe.transform(test_set[multi_class_cols])
 
-	return train_set, test_set
+    return train_set, test_set
+
+
 
 
 # Print number of unique items in dataset
